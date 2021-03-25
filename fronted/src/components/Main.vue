@@ -1,0 +1,61 @@
+<template>
+  <div class="home-component">
+    <div class = "top left">
+      <clock></clock>
+    </div>
+  </div>
+</template>
+
+<script>
+import Clock from './Clock'
+
+export default {
+  name: 'Main',
+  components: {Clock}
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+body {
+  font-family: "Roboto", sans-serif;
+  background: #000000;
+  overflow: hidden;
+  cursor:none;
+}
+  /*
+  Overscan for Mirror
+
+  Top: 1.4rem
+  Bottom: 2.2rem
+  Left: 0rem
+  Right: 2.3rem
+
+  */
+
+.home-component{
+  position:absolute;
+  padding:2.5rem;
+  top:2rem;
+  bottom:2rem;
+  left:2rem;
+  right:2rem;
+}
+
+.top,.bottom {
+  position: absolute;
+}
+
+.top{
+  top:1.4rem;
+}
+.bottom{
+  bottom:2.2rem;
+}
+.left{
+  left:0rem
+}
+.right{
+  right:2.3rem
+}
+</style>
