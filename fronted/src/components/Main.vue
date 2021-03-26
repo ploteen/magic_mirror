@@ -2,16 +2,21 @@
   <div class="home-component">
     <div class = "top left">
       <clock></clock>
+      <calender></calender>
+    </div>
+    <div class ="top right">
+      <weather></weather>
     </div>
   </div>
 </template>
 
 <script>
 import Clock from './Clock'
-
+import Calender from './Calender'
+import Weather from './Weather'
 export default {
   name: 'Main',
-  components: {Clock}
+  components: {Clock, Calender, Weather}
 }
 </script>
 
