@@ -4,8 +4,8 @@ html,body {
     height: 100%;
 }
 body {
-    background: #0f3854;
-    background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+    background: black;
+    /*background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);*/
     background-size: 100%;
 }
 p {
@@ -14,19 +14,20 @@ p {
 }
 .clock {
     font-family: 'Share Tech Mono', monospace;
-    color: #ffffff;
+    color: rgb(51, 51, 51);
     text-align: center;
     
     
     
     
-    color: #daf6ff;
-    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    color: rgb(51, 51, 51);
+   
 }
     .time {
         letter-spacing: 0.05em;
         font-size: 80px;
         padding: 5px 0;
+        color:#aaa;
     }
     .date {
         letter-spacing: 0.1em;
