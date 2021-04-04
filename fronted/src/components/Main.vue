@@ -7,6 +7,7 @@
     <div class ="top right">
       <weather></weather>
     </div>
+    <record></record>
   </div>
 </template>
 
@@ -14,9 +15,10 @@
 import Clock from './Clock'
 import Calender from './Calender'
 import Weather from './Weather'
+import Record from './Record'
 export default {
   name: 'Main',
-  components: {Clock, Calender, Weather}
+  components: {Clock, Calender, Weather, Record}
 }
 </script>
 

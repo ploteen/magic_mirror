@@ -6,9 +6,13 @@ import router from './router'
 import VueMoment from 'vue-momentjs'
 import VueWeather from 'vue-weather-widget'
 import axios from 'axios'
+// import Recorder from 'recorderjs'
+// import vueRecorder from 'vue-recorder'
 Vue.config.productionTip = false
 Vue.use(VueMoment)
 Vue.use(VueWeather)
+// Vue.use(Recorder)
+// Vue.use(vueRecorder)
 Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({

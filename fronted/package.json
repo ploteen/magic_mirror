@@ -15,9 +15,12 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "recorderjs": "^1.0.1",
     "vue": "^2.5.2",
+    "vue-audio-recorder": "^3.0.1",
     "vue-moment": "^4.1.0",
     "vue-momentjs": "^1.0.0",
+    "vue-recorder": "^0.1.0",
     "vue-router": "^3.0.1",
     "vue-weather-widget": "^4.2.3"
   },

@@ -12,7 +12,7 @@ export default {
   },
   data () {
     return {
-      update: 1000
+      update: 1000000
     }
   }
 }

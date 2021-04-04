@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 html,body {
     height: 100%;
 }
@@ -13,7 +13,7 @@ p {
     padding: 0;
 }
 .clock {
-    font-family: 'Share Tech Mono', monospace;
+   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
     color: rgb(51, 51, 51);
     text-align: center;
     
