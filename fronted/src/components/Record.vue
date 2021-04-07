@@ -1,28 +1,42 @@
 <template>
-  <div>{{message}}</div>
+  <div>
+  </div>
 </template>
 
 <script>
 import vueRecorder from 'vue-recorder'
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   name: 'Record',
   data () {
     return {
-      message: ''
+      message: 0
     }
   },
   methods: {
     startRecording: function () {
-      this.message = vueRecorder.startRecording()
-      console.log(this.message)
+      vueRecorder.startRecording()
+      // console.log(vueRecorder)
     },
     stopRecording: function () {
+      // console.log(vueRecorder)
+      vueRecorder.stopRecording().then(audio => {
+        const fd = new FormData()
+        fd.append('data', audio.blob)
+        axios.post('./audio', fd)
+      })
+    },
+    resumeRecording: function () {
+      vueRecorder.resumeRecording()
     }
   },
-  created () {
+  mounted () {
     this.startRecording()
-    // this.stopRecording()
+    var temp = this
+    setInterval(function () {
+      temp.stopRecording()
+      temp.resumeRecording()
+    }, 1500)
   }
 }
 </script>

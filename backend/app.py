@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify,request
 import datetime
 import os.path
 from googleapiclient.discovery import build
@@ -60,8 +60,9 @@ def get_calendar():
 #audio machine learning
 @app.route('/audio', methods=['POST'])
 def get_audio():
-    if request.method == 'POST':
-        return f"{{request.Content-Type}}"
+  request.files['data'].save("./"+"a.wav")
+  print(request.files['data'])
+  return f"{{request.Content-Type}}"
     
 @app.route('/recorderWorker.js')
 def ret_recordworker():

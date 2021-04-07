@@ -6,8 +6,8 @@
     </div>
     <div class ="top right">
       <weather></weather>
+      <!--<record></record>-->
     </div>
-    <record></record>
   </div>
 </template>
 
