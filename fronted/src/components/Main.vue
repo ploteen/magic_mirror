@@ -8,6 +8,7 @@
       <weather></weather>
       <!--<record></record>-->
     </div>
+    <div class ="bottom center"><news></news></div>
   </div>
 </template>
 
@@ -16,9 +17,10 @@ import Clock from './Clock'
 import Calender from './Calender'
 import Weather from './Weather'
 import Record from './Record'
+import news from './News'
 export default {
   name: 'Main',
-  components: {Clock, Calender, Weather, Record}
+  components: {Clock, Calender, Weather, Record, news}
 }
 </script>
 
@@ -65,5 +67,9 @@ body {
 }
 .right{
   right:2.3rem
+}
+.center{
+  left: 50%;
+  transform: translate(-50%,0);
 }
 </style>

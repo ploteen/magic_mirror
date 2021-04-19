@@ -19,8 +19,10 @@ export default {
       // console.log(vueRecorder)
     },
     stopRecording: function () {
+      let self = this
       // console.log(vueRecorder)
       vueRecorder.stopRecording().then(audio => {
+        self.resumeRecording()
         const fd = new FormData()
         fd.append('data', audio.blob)
         axios.post('./audio', fd)
@@ -35,8 +37,7 @@ export default {
     var temp = this
     setInterval(function () {
       temp.stopRecording()
-      temp.resumeRecording()
-    }, 1500)
+    }, 1300)
   }
 }
 </script>
