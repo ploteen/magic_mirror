@@ -1,16 +1,21 @@
 from flask import Flask, render_template, jsonify,request
 import datetime
 import os.path
+from flask_socketio import SocketIO, emit
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-
+from flask_cors import CORS
+from modules.news import news_crawl
 #구글 인증
 app = Flask(__name__)
+#한글을 위한 인코딩 변경 
+app.config['JSON_AS_ASCII'] = False
+socketio = SocketIO(app, cors_allowed_origins='*')
 #google oauth 
 creds_filename = 'aouth_client.json'
-
+CORS(app)
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 flow = InstalledAppFlow.from_client_secrets_file(creds_filename, SCOPES)
 
@@ -57,21 +62,24 @@ def get_calendar():
     #print(events_result)
     return jsonify(events_result.get('items',[]))
 
-#audio machine learning
 @app.route('/audio', methods=['POST'])
 def get_audio():
-  request.files['data'].save("./"+"a.wav")
   print(request.files['data'])
-  return f"{{request.Content-Type}}"
-    
+  now = str(datetime.datetime.now())
+  str1 = str(now)[:10]
+  str2 = str(now)[11:13]+now[14:16]+now[17:19]
+  filename = str1+'-'+str2
+  filename.replace('','-')
+  request.files['data'].save("./audio/"+filename+".wav")
+  print("OK")
+  return ''
+#마지막에 js return 방식으로 바꾸기
 @app.route('/recorderWorker.js')
 def ret_recordworker():
     return """var recLength = 0,
   recBuffersL = [],
   recBuffersR = [],
   sampleRate;
-
-
 self.onmessage = function(e) {
   switch(e.data.command){
     case 'init':
@@ -91,40 +99,33 @@ self.onmessage = function(e) {
       break;
   }
 };
-
 function init(config){
   sampleRate = config.sampleRate;
 }
-
 function record(inputBuffer){
   recBuffersL.push(inputBuffer[0]);
   recBuffersR.push(inputBuffer[1]);
   recLength += inputBuffer[0].length;
 }
-
 function exportWAV(type){
   var bufferL = mergeBuffers(recBuffersL, recLength);
   var bufferR = mergeBuffers(recBuffersR, recLength);
   var interleaved = interleave(bufferL, bufferR);
   var dataview = encodeWAV(interleaved);
   var audioBlob = new Blob([dataview], { type: type });
-
   self.postMessage(audioBlob);
 }
-
 function getBuffer() {
   var buffers = [];
   buffers.push( mergeBuffers(recBuffersL, recLength) );
   buffers.push( mergeBuffers(recBuffersR, recLength) );
   self.postMessage(buffers);
 }
-
 function clear(){
   recLength = 0;
   recBuffersL = [];
   recBuffersR = [];
 }
-
 function mergeBuffers(recBuffers, recLength){
   var result = new Float32Array(recLength);
   var offset = 0;
@@ -134,14 +135,11 @@ function mergeBuffers(recBuffers, recLength){
   }
   return result;
 }
-
 function interleave(inputL, inputR){
   var length = inputL.length + inputR.length;
   var result = new Float32Array(length);
-
   var index = 0,
     inputIndex = 0;
-
   while (index < length){
     result[index++] = inputL[inputIndex];
     result[index++] = inputR[inputIndex];
@@ -149,24 +147,20 @@ function interleave(inputL, inputR){
   }
   return result;
 }
-
 function floatTo16BitPCM(output, offset, input){
   for (var i = 0; i < input.length; i++, offset+=2){
     var s = Math.max(-1, Math.min(1, input[i]));
     output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
   }
 }
-
 function writeString(view, offset, string){
   for (var i = 0; i < string.length; i++){
     view.setUint8(offset + i, string.charCodeAt(i));
   }
 }
-
 function encodeWAV(samples){
   var buffer = new ArrayBuffer(44 + samples.length * 2);
   var view = new DataView(buffer);
-
   /* RIFF identifier */
   writeString(view, 0, 'RIFF');
   /* RIFF chunk length */
@@ -193,16 +187,19 @@ function encodeWAV(samples){
   writeString(view, 36, 'data');
   /* data chunk length */
   view.setUint32(40, samples.length * 2, true);
-
   floatTo16BitPCM(view, 44, samples);
-
   return view;
 }
 """
-
-
+@app.route('/news')
+def news():
+    nnews = news_crawl()
+    dict_nnews = {i: string for i,string in enumerate(nnews)}
+    # print(dict_nnews)
+    return jsonify(dict_nnews)
+    
+    
 port_num = "8000"
 host_addr = "0.0.0.0"
-
 if __name__ == "__main__":
-    app.run(host=host_addr,port=port_num,debug=True)
+  app.run(host=host_addr, port=port_num,debug=True)

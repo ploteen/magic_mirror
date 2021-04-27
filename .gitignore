@@ -6,3 +6,5 @@ smart-mirror-ko
 calendar
 test
 vue-audio-recorder-master
+*.ogg
+nodejsserver
