@@ -30,9 +30,9 @@ export default {
         this.show = false
       } else if (this.show === false) {
         this.show = true
-        let self = this
+        // let self = this
         this.idx = Number(this.idx + 1) % Number(this.news.length)
-        console.log(self.idx)
+        // console.log(self.idx)
       }
     }
   },

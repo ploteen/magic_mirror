@@ -19,17 +19,13 @@ export default {
       // console.log(vueRecorder)
     },
     stopRecording: function () {
-      let self = this
       // console.log(vueRecorder)
       vueRecorder.stopRecording().then(audio => {
-        self.resumeRecording()
+        vueRecorder.resumeRecording()
         const fd = new FormData()
         fd.append('data', audio.blob)
         axios.post('./audio', fd)
       })
-    },
-    resumeRecording: function () {
-      vueRecorder.resumeRecording()
     }
   },
   mounted () {

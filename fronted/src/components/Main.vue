@@ -1,12 +1,13 @@
 <template>
   <div class="home-component">
+    <youtube></youtube>
+    <!--<record></record>-->
     <div class = "top left">
       <clock></clock>
       <calender></calender>
     </div>
     <div class ="top right">
       <weather></weather>
-      <!--<record></record>-->
     </div>
     <div class ="bottom center"><news></news></div>
   </div>
@@ -18,11 +19,13 @@ import Calender from './Calender'
 import Weather from './Weather'
 import Record from './Record'
 import news from './News'
+import Youtube from './Youtube'
 export default {
   name: 'Main',
-  components: {Clock, Calender, Weather, Record, news}
+  components: {Clock, Calender, Weather, Record, news, Youtube}
 }
 </script>
+    Youtube
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>

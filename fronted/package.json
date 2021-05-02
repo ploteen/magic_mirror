@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "annyang": "^2.6.1",
     "axios": "^0.21.1",
     "recorderjs": "^1.0.1",
     "recordrtc": "^5.6.2",
@@ -26,6 +27,8 @@
     "vue-momentjs": "^1.0.0",
     "vue-recorder": "^0.1.0",
     "vue-router": "^3.0.1",
+    "vue-speech": "^0.1.0",
+    "vue-speech-recognition": "^0.2.1",
     "vue-weather-widget": "^4.2.3"
   },
   "devDependencies": {

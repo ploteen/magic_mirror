@@ -64,14 +64,12 @@ def get_calendar():
 
 @app.route('/audio', methods=['POST'])
 def get_audio():
-  print(request.files['data'])
   now = str(datetime.datetime.now())
   str1 = str(now)[:10]
   str2 = str(now)[11:13]+now[14:16]+now[17:19]
   filename = str1+'-'+str2
   filename.replace('','-')
   request.files['data'].save("./audio/"+filename+".wav")
-  print("OK")
   return ''
 #마지막에 js return 방식으로 바꾸기
 @app.route('/recorderWorker.js')
