@@ -27,9 +27,12 @@
     "vue-momentjs": "^1.0.0",
     "vue-recorder": "^0.1.0",
     "vue-router": "^3.0.1",
+    "vue-soundcloud-player": "^1.2.0",
     "vue-speech": "^0.1.0",
     "vue-speech-recognition": "^0.2.1",
-    "vue-weather-widget": "^4.2.3"
+    "vue-weather-widget": "^4.2.3",
+    "vue-youtube": "^1.4.0",
+    "youtube-player": "^5.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

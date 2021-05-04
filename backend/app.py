@@ -197,7 +197,7 @@ def news():
     return jsonify(dict_nnews)
     
     
-port_num = "8000"
+port_num = "30000"
 host_addr = "0.0.0.0"
 if __name__ == "__main__":
   app.run(host=host_addr, port=port_num,debug=True)

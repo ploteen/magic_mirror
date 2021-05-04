@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     get_calendar: function () {
-      axios.get('http://localhost:8000/google/calendar').then((resp) => {
+      axios.get('/google/calendar').then((resp) => {
         this.list = resp.data
       }).catch((error) => {
         console.error(error)

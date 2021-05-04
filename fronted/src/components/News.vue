@@ -19,7 +19,7 @@ export default {
   methods: {
     get_news: function () {
       let self = this
-      axios.get('http://localhost:8000/news').then((resp) => {
+      axios.get('/news').then((resp) => {
         for (const key in resp.data) {
           self.news.push(resp.data[key])
         }
