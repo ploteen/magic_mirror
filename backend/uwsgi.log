@@ -1,0 +1,19 @@
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon May 10 15:58:22 2021] ***
+compiled with version: 7.5.0 on 15 October 2020 10:51:15
+os: Linux-4.19.104-microsoft-standard #1 SMP Wed Feb 19 06:37:35 UTC 2020
+nodename: DESKTOP-TDP5BMH
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 8
+current working directory: /home/ploteen/magic_mirror/backend
+detected binary path: /home/ploteen/anaconda3/envs/django/bin/uwsgi
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 50986
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address magic_mirror.sock fd 3
+probably another instance of uWSGI is running on the same address (:9000).
+bind(): Address already in use [core/socket.c line 769]
