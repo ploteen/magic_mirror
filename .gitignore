@@ -9,3 +9,4 @@ vue-audio-recorder-master
 *.ogg
 nodejsserver
 *.wav
+.vscode

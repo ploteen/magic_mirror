@@ -1,9 +1,9 @@
 <template>
   <div class="home-component">
-    <!--<record></record>-->
     <div class = "top left">
       <clock></clock>
       <calender></calender>
+      <record></record>
     </div>
     <div class ="top right">
       <weather></weather>

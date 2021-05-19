@@ -6,4 +6,3 @@ rm ../backend/templates/index.html
 npm run build
 mv dist/static/ ../backend/
 mv dist/index.html ../backend/templates/index.html
-cd ../backend && python app.py

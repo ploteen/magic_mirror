@@ -8,6 +8,7 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from flask_cors import CORS
 from modules.news import news_crawl
+from ML.running_wav import machine_learning
 #구글 인증
 app = Flask(__name__)
 #한글을 위한 인코딩 변경 
@@ -18,7 +19,7 @@ creds_filename = 'aouth_client.json'
 CORS(app)
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 flow = InstalledAppFlow.from_client_secrets_file(creds_filename, SCOPES)
-
+model = machine_learning()
 
 creds = None
 if os.path.exists('token.json'):
@@ -70,8 +71,10 @@ def get_audio():
   filename = str1+'-'+str2
   filename.replace('','-')
   request.files['data'].save("./audio/"+filename+".wav")
-  return ''
-#마지막에 js return 방식으로 바꾸기
+  a = str(model.detecting("./audio/"+filename+".wav"))
+  print(a)
+  return a
+  #마지막에 js return 방식으로 바꾸기
 @app.route('/recorderWorker.js')
 def ret_recordworker():
     return """var recLength = 0,
@@ -197,7 +200,7 @@ def news():
     return jsonify(dict_nnews)
     
     
-port_num = "30000"
+port_num = "9999"
 host_addr = "0.0.0.0"
 if __name__ == "__main__":
   app.run(host=host_addr, port=port_num,debug=True)
