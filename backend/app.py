@@ -9,6 +9,7 @@ from google.oauth2.credentials import Credentials
 from flask_cors import CORS
 from modules.news import news_crawl
 from ML.running_wav import machine_learning
+from modules.corona import corona_scrap
 #구글 인증
 app = Flask(__name__)
 #한글을 위한 인코딩 변경 
@@ -198,7 +199,10 @@ def news():
     dict_nnews = {i: string for i,string in enumerate(nnews)}
     # print(dict_nnews)
     return jsonify(dict_nnews)
-    
+@app.route('/corona')
+def corona():
+    numbers = corona_scrap()
+    return jsonify(numbers)
     
 port_num = "9999"
 host_addr = "0.0.0.0"

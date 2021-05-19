@@ -19,7 +19,7 @@ export default {
   name: 'Record',
   data () {
     return {
-      is_washing: true,
+      is_washing: false,
       video: require('@/assets/washing_six.mp4'),
       count: 0,
       bool: undefined,

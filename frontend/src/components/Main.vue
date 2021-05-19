@@ -5,6 +5,9 @@
       <calender></calender>
       <record></record>
     </div>
+    <div class="top center">
+      <corona></corona>
+    </div>
     <div class ="top right">
       <weather></weather>
       <Speech></Speech>
@@ -20,9 +23,10 @@ import Weather from './Weather'
 import Record from './Record'
 import news from './News'
 import Speech from './Speech'
+import Corona from './Corona'
 export default {
   name: 'Main',
-  components: {Clock, Calender, Weather, Record, news, Speech}
+  components: {Clock, Calender, Weather, Record, news, Speech, Corona}
 }
 </script>
 
